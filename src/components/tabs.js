@@ -1,4 +1,6 @@
 
+  
+  import axios from 'axios' //importing axios. Just want to add I'm not 100% sure if this was the intended way to do this for task 3, but I (and others) have put our 'hand raised' emoji's into slack and I haven't had anyone reach out to me yet.. I don't believe the two ahead of me either. The most recent check mark is on a question asked 3 hours ago.
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -37,7 +39,7 @@
 }
 
 console.log(Tabs(['javascript', 'bootstrap', 'technology']))
-const tabsAppender = (selector) => {
+
   // TASK 4
   // ---------------------
   // Implement this function which takes a css selector as its only argument.
@@ -45,6 +47,7 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+  const tabsAppender = (selector) => {
 }
 
 export { Tabs, tabsAppender }
