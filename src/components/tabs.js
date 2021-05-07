@@ -13,7 +13,7 @@
   //   <div class="tab">technology</div>
   // </div>
   //
-  const headerContainer = document.querySelector('.header-container')
+  
   const Tabs = (topics) => {
     const topicsStart = document.createElement('div')
     const tabOne = document.createElement('div')
@@ -29,13 +29,14 @@
     tabTwo.classList.add('tab')
     tabThree.classList.add('tab')
 
-    tabOne.textContent = topics[1]
-    tabTwo.textContent = topics[2]
-    tabThree.textContent = topics[3]
+    tabOne.textContent = topics[0]
+    tabTwo.textContent = topics[1]
+    tabThree.textContent = topics[2]
 
+    return topicsStart
 }
 
-console.log(Tabs('javascript', 'bootstrap', 'technology'))
+console.log(Tabs(['javascript', 'bootstrap', 'technology']))
 const tabsAppender = (selector) => {
   // TASK 4
   // ---------------------

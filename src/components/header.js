@@ -1,4 +1,4 @@
-const headerContainer = document.querySelector('.header-container')
+// const headerContainer = document.querySelector('.header-container')
 const Header = (title, date, temp) => {
   const headerStart = document.createElement('div')
   const datePart = document.createElement('span')
@@ -42,7 +42,7 @@ console.log(Header('Lambda Times', 'May 7, 2021', '43\u00B0'))
   
 const headerAppender = (selector) => { 
   Header('Lambda Times', 'May 7, 2021', '43\u00B0')
-  headerContainer.appendChild(Header)
+  // headerContainer.appendChild(Header)
 }
 
 export { Header, headerAppender }
