@@ -1,8 +1,8 @@
 
   
   import axios from 'axios' //importing axios.
-  const lambdaTopics = axios.get('https://lambda-times-api.herokuapp.com/topics')
-  console.log(lambdaTopics)
+  const topics = axios.get('https://lambda-times-api.herokuapp.com/topics')
+  // console.log(lambdaTopics) testing to make sure axios imported properly and is working as needed
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -50,12 +50,10 @@ console.log(Tabs(['javascript', 'bootstrap', 'technology']))
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  const tabsAppender = (selector) => {
-    // axios
-    // .get(`https://lambda-times-api.herokuapp.com/${selector}`)
-    // .then(res => {
-
-//     })
-}
+  const tabsAppender = () => {
+  const tabsContainer = document.querySelector('.tabs-container')
+   let tab = Tabs(topics)
+   tabsContainer.appendChild(tab)
+} 
 
 export { Tabs, tabsAppender }
