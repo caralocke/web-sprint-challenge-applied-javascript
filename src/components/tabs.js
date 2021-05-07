@@ -50,9 +50,9 @@ console.log(Tabs(['javascript', 'bootstrap', 'technology']))
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  const tabsAppender = () => {
-  const tabsContainer = document.querySelector('.tabs-container')
-   let tab = Tabs(topics)
+  const tabsAppender = (selector) => {
+  const tabsContainer = document.querySelector(selector)
+  const tab = Tabs(topics)
    tabsContainer.appendChild(tab)
 } 
 
