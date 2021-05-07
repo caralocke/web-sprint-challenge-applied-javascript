@@ -23,6 +23,10 @@ const Card = (article) => {
 
   imgSrc.src = '{authorPhoto}'
 
+  card.addEventListener('click', (event) => {
+     console.log('{headline}')
+    })
+
   return card
 }
 console.log(Card())
