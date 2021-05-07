@@ -1,6 +1,8 @@
 
   
-  import axios from 'axios' //importing axios. Just want to add I'm not 100% sure if this was the intended way to do this for task 3, but I (and others) have put our 'hand raised' emoji's into slack and I haven't had anyone reach out to me yet.. I don't believe the two ahead of me either. The most recent check mark is on a question asked 3 hours ago.
+  import axios from 'axios' //importing axios.
+  const lambdaTopics = axios.get('https://lambda-times-api.herokuapp.com/topics')
+  console.log(lambdaTopics)
   // TASK 3
   // ---------------------
   // Implement this function which takes an array of strings ("topics") as its only argument.
@@ -47,7 +49,13 @@ console.log(Tabs(['javascript', 'bootstrap', 'technology']))
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+
   const tabsAppender = (selector) => {
+    // axios
+    // .get(`https://lambda-times-api.herokuapp.com/${selector}`)
+    // .then(res => {
+
+//     })
 }
 
 export { Tabs, tabsAppender }
