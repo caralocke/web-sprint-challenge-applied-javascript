@@ -1,7 +1,16 @@
 
   
   import axios from 'axios' //importing axios.
-  const topics = axios.get('https://lambda-times-api.herokuapp.com/topics')
+  const topics = axios
+  .get('https://lambda-times-api.herokuapp.com/topics')
+  .then(res => {
+    console.log('here is my future data', res)
+  })
+  .catch(error => {
+    console.log('here is the error', error)
+  })
+
+  console.log('topics:', topics)
   // console.log(lambdaTopics) testing to make sure axios imported properly and is working as needed
   // TASK 3
   // ---------------------
@@ -23,24 +32,33 @@
     const tabOne = document.createElement('div')
     const tabTwo = document.createElement('div')
     const tabThree = document.createElement('div')
+    const tabFour = document.createElement('div')
+    const tabFive = document.createElement('div')
 
     topicsStart.appendChild(tabOne)
     topicsStart.appendChild(tabTwo)
     topicsStart.appendChild(tabThree)
+    topicsStart.appendChild(tabFour)
+    topicsStart.appendChild(tabFive)
 
     topicsStart.classList.add('topics')
     tabOne.classList.add('tab')
     tabTwo.classList.add('tab')
     tabThree.classList.add('tab')
+    tabFour.classList.add('tab')
+    tabFive.classList.add('tab')
 
     tabOne.textContent = topics[0]
     tabTwo.textContent = topics[1]
     tabThree.textContent = topics[2]
+    tabFour.textContent = topics[3]
+    tabFive.textContent = topics [4]
+    
 
     return topicsStart
 }
 
-console.log(Tabs(['javascript', 'bootstrap', 'technology']))
+console.log('Tabs \n',Tabs(topics))
 
   // TASK 4
   // ---------------------
@@ -51,9 +69,23 @@ console.log(Tabs(['javascript', 'bootstrap', 'technology']))
   //
 
   const tabsAppender = (selector) => {
-  const tabsContainer = document.querySelector(selector)
-  const tab = Tabs(topics)
-   tabsContainer.appendChild(tab)
+    axios
+  .get(`https://lambda-times-api.herokuapp.com/topics`)
+  .then(res => {
+    const tabsContainer = document.querySelector(selector)
+    console.log('res.data.articles \n\n', res.data.articles)
+    const tab = res.data.articles
+    topics.forEach((obj))
+    
+    tabsContainer.appendChild(topics)
+    console.log('here is my future data', res)
+    
+
+  })
+  .catch(error => {
+    console.log(`here is the error: ${error}`)
+  })
+  console.log('topics:', topics)   
 } 
 
 export { Tabs, tabsAppender }

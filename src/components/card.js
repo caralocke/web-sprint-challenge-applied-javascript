@@ -1,6 +1,6 @@
   import axios from 'axios' //importing axios
   let articles = axios.get('https://lambda-times-api.herokuapp.com/articles')
-  console.log(articles) //making sure axios is working properly
+  console.log('articles \nn', articles) //making sure axios is working properly
   // TASK 5
   // ---------------------
   // Implement this function, which should return the markup you see below.
@@ -40,8 +40,8 @@ const Card = (article) => {
   author.classList.add('author')
   imgContainer.classList.add('img-container')
   
-  headline.textContent = '{headline}'
-  authorName.textContent = 'By {authorName}'
+  headline.textContent = headline
+  authorName.textContent = 'By ${authorName}'
 
   imgSrc.src = '{authorPhoto}'
 
@@ -66,9 +66,17 @@ console.log(Card())
   // Append each card to the element in the DOM that matches the selector passed to the function.
   //
   const cardAppender = (selector) => {
+    axios
+    .get('https://lambda-times-api.herokuapp.com/articles')
+    .then(res => {
     const cardContainer = document.querySelector(selector)
-    const article = Card(articles)
-    cardContainer.appendChild(article)
+    const articles = Card(res.data.articles)
+    console.log('response \n', res)
+    console.log('res data \n', res.data)
+    console.log('res data articles \n', res.data.articles)
+    // articles.forEach(article)
+    cardContainer.appendChild(articles)
+  })
 }
 
 export { Card, cardAppender }
