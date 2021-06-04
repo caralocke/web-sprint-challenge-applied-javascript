@@ -41,7 +41,7 @@ const tabsAppender = (selector) => {
   axios
   .get(`https://lambda-times-api.herokuapp.com/topics`)
   .then(res => {
-    console.log('res.data.topics', res.data.topics)
+    console.log('res.data.topics for tabs.js', res.data.topics)
     const topicsArray = res.data.topics
     const tabs = Tabs(topicsArray)
     tabsContainer.appendChild(tabs)

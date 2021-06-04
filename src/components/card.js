@@ -15,6 +15,9 @@
 //     <span>By { authorName }</span>
 //   </div>
 // </div>
+
+import axios from "axios"
+
 //
 const Card = (article) => {
   const cardElement = document.createElement('div')
@@ -42,15 +45,50 @@ const Card = (article) => {
   return cardElement
 }
 
+// TASK 6
+// ---------------------
+// Implement this function that takes a css selector as its only argument.
+// It should obtain articles from this endpoint: `https://lambda-times-api.herokuapp.com/articles`
+// However, the articles do not come organized in a single, neat array. Inspect the response closely!
+// Create a card from each and every article object in the response, using the Card component.
+// Append each card to the element in the DOM that matches the selector passed to the function.
+//
 const cardAppender = (selector) => {
-  // TASK 6
-  // ---------------------
-  // Implement this function that takes a css selector as its only argument.
-  // It should obtain articles from this endpoint: `https://lambda-times-api.herokuapp.com/articles`
-  // However, the articles do not come organized in a single, neat array. Inspect the response closely!
-  // Create a card from each and every article object in the response, using the Card component.
-  // Append each card to the element in the DOM that matches the selector passed to the function.
-  //
+  const cardsContainer = document.querySelector(selector)
+  axios
+  .get(`https://lambda-times-api.herokuapp.com/articles`)
+  .then(res => {
+    console.log('res.data.articles for card.js:', res.data.articles)
+    const bootstrapArray = res.data.articles.bootstrap
+    const javascriptArray = res.data.articles.javascript
+    const jqueryArray = res.data.articles.jquery
+    const nodeArray = res.data.articles.node
+    const technologyArray = res.data.articles.technology
+
+    bootstrapArray.forEach(article => {
+      const bootstrapCard = Card(article)
+      cardsContainer.appendChild(bootstrapCard)
+    })
+    javascriptArray.forEach(article => {
+      const javascriptCard = Card(article)
+      cardsContainer.appendChild(javascriptCard)
+    })
+    jqueryArray.forEach(article => {
+      const jqueryCard = Card(article)
+      cardsContainer.appendChild(jqueryCard)
+    })
+    nodeArray.forEach(article => {
+      const nodeCard = Card(article)
+      cardsContainer.appendChild(nodeCard)
+    })
+    technologyArray.forEach(article => {
+      const tecnhologyCard = Card(article)
+      cardsContainer.appendChild(tecnhologyCard)
+    })
+  })
+  .catch(err => {
+    console.log(`Here's where you messed up: \n`, err)
+  })
 }
 
 export { Card, cardAppender }
